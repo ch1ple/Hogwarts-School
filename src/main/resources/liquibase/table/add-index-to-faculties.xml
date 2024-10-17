@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.9.xsd">
+
+    <changeSet id="add-index-to-faculties.1" author="SlavaMarchkov">
+
+        <preConditions>
+            <and>
+                <tableExists tableName="faculties"/>
+                <not>
+                    <indexExists tableName="faculties" indexName="faculties_name_color_index"/>
+                </not>
+            </and>
+        </preConditions>
+
+        <createIndex tableName="faculties" indexName="faculties_name_color_index" unique="true">
+            <column name="name"/>
+            <column name="color"/>
+        </createIndex>
+
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.9.xsd">
+
+    <changeSet id="add-index-to-students.1" author="SlavaMarchkov">
+
+        <preConditions>
+            <and>
+                <tableExists tableName="students"/>
+                <not>
+                    <indexExists tableName="students" indexName="students_name_index"/>
+                </not>
+            </and>
+        </preConditions>
+
+        <createIndex tableName="students" indexName="students_name_index">
+            <column name="name"/>
+        </createIndex>
+
+    </changeSet>
+</databaseChangeLog>

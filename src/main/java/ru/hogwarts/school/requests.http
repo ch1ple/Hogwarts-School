@@ -1,0 +1,81 @@
+### Create student POST request
+POST {{host}}/student
+Content-Type: application/json
+
+{
+  "name": "Silvio Berlusconni",
+  "age": 26,
+  "facultyId": 2
+}
+
+### Create faculty POST request
+POST {{host}}/faculty
+Content-Type: application/json
+
+{
+  "name": "Witchery",
+  "color": "blue"
+}
+
+### GET all students
+GET {{host}}/student
+Accept: application/json
+
+### GET all students count
+GET {{host}}/student/allStudentsCount
+Accept: application/json
+
+### GET average age of all students
+GET {{host}}/student/avgStudentsAge
+Accept: application/json
+
+### GET average age of all students using Stream API
+GET {{host}}/student/average-age-of-students
+Accept: application/json
+
+### GET students that were added last
+GET {{host}}/student/lastStudents?count=2
+Accept: application/json
+
+### GET avatars (using pagination)
+GET {{host}}/avatar
+Accept: application/json
+
+### GET a student by ID
+GET {{host}}/student/4
+Accept: application/json
+
+### GET a faculty by ID
+GET {{host}}/faculty/5
+Accept: application/json
+
+### GET the port
+GET {{host}}/getPort
+Accept: application/json
+
+### Send a form with the text and file fields
+PATCH {{host}}/student/4/avatar
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="avatar"; filename="idol.jpg"
+Content-Type: image/jpeg
+
+< idol.jpg
+--WebAppBoundary
+
+### GET students with name starting with letter
+GET {{host}}/student/name-starts-with-letter?letter=a
+Accept: application/json
+
+### GET the longest faculty name
+GET {{host}}/faculty/longest-name
+Accept: application/json
+
+### GET students' names in parallel threads
+GET {{host}}/student/threads
+Accept: application/json
+
+### GET students' names in synchronized threads
+GET {{host}}/student/sync-threads
+Accept: application/json
